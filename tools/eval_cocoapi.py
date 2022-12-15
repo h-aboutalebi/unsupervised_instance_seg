@@ -15,8 +15,8 @@ dataDir='datasets/coco/'
 dataType='val2017'
 annFile = '{}/annotations/{}_{}.json'.format(dataDir,prefix,dataType)
 cocoGt=COCO(annFile)
-
-resFile = 'training_dir/FreeSOLO_pl/inference/coco_instances_results.json'
+resFile ="/home/hossein/github/FreeSOLO/results/demo/inference/coco_instances_results.json"
+# resFile = 'training_dir/FreeSOLO_pl/inference/coco_instances_results.json'
 #resFile = 'demo/instances_val2017_densecl_r101.json'
 cocoDt=cocoGt.loadRes(resFile)
 

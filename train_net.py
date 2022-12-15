@@ -34,6 +34,7 @@ import detectron2.utils.comm as comm
 from detectron2.checkpoint import DetectionCheckpointer
 from detectron2.config import get_cfg
 from detectron2.engine import default_argument_parser, default_setup, launch
+from datasets.truck.register_truck import get_truck_dicts
 
 from freesolo import add_solo_config
 from freesolo.engine.trainer import BaselineTrainer
@@ -57,9 +58,9 @@ def setup(args):
 
 
 def main(args):
+    get_truck_dicts()
     cfg = setup(args)
     Trainer = BaselineTrainer
-
     if args.eval_only:
         model = Trainer.build_model(cfg)
         DetectionCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
@@ -76,7 +77,6 @@ def main(args):
 
 if __name__ == "__main__":
     args = default_argument_parser().parse_args()
-
     print("Command Line Args:", args)
     launch(
         main,

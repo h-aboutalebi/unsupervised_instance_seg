@@ -4,13 +4,14 @@
 # To view a copy of this license, visit
 # https://github.com/NVlabs/FreeSOLO/blob/main/LICENSE
 
-python train_net.py \
+#bash test.sh /home/hossein/github/FreeSOLO/training_dir/FreeSOLO_R101_30k_pl.pth
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train_net.py \
 	--dist-url tcp://127.0.0.1:$(( RANDOM % 1000 + 50000 )) \
 	--eval-only \
-	--num-gpus 1 \
+	--num-gpus 8 \
 	--config configs/freesolo/freesolo_30k.yaml \
-	OUTPUT_DIR training_dir/FreeSOLO_pl \
+	OUTPUT_DIR /home/hossein/data/tmp2 \
 	MODEL.WEIGHTS $1
 
 # evaluate using official coco api
-python tools/eval_cocoapi.py
+# python tools/eval_cocoapi.py

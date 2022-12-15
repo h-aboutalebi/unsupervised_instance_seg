@@ -37,7 +37,9 @@ from detectron2.utils.file_io import PathManager
 from detectron2.utils.logger import setup_logger
 from detectron2.utils.visualizer import Visualizer
 
-import sys 
+import sys
+sys.path.append('/home/hossein/github/FreeSOLO')
+from datasets.truck.register_truck import get_truck_dicts 
 sys.path.append("..") 
 
 
@@ -67,12 +69,13 @@ def create_instances(predictions, image_size):
 
 
 if __name__ == "__main__":
+    get_truck_dicts()
     parser = argparse.ArgumentParser(
         description="A script that visualizes the json predictions from COCO or LVIS dataset."
     )
     parser.add_argument("--input", required=True, help="JSON file produced by the model")
     parser.add_argument("--output", required=True, help="output directory")
-    parser.add_argument("--dataset", help="name of the dataset", default="coco_2017_val")
+    parser.add_argument("--dataset", help="name of the dataset", default="truck_val")
     parser.add_argument("--conf-threshold", default=0.5, type=float, help="confidence threshold")
     args = parser.parse_args()
 

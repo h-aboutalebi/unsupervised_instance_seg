@@ -20,3 +20,4 @@ python demo/inference_freemask.py --config-file configs/freesolo/freemask.yaml \
 
 # merge train2017 and unlabeled2017 json files
 python tools/merge_train2017_unlabeled2017.py
+

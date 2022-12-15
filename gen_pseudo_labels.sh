@@ -5,16 +5,16 @@
 # https://github.com/NVlabs/FreeSOLO/blob/main/LICENSE
 
 #export GLOO_SOCKET_IFNAME=eth0
-python train_net.py \
+CUDA_VISIBLE_DEVICES=7 python train_net.py \
 	--dist-url tcp://127.0.0.1:$(( RANDOM % 1000 + 50000 )) \
 	--eval-only \
-	--num-gpus 8 \
+	--num-gpus 1 \
 	--config configs/freesolo/freesolo_30k.yaml \
 	OUTPUT_DIR training_dir/FreeSOLO_pl_1 \
 	DATASETS.TEST  '("coco_2017_train_unlabeled_densecl_r101",)' \
 	MODEL.SOLOV2.UPDATE_THR 0.3 \
 	MODEL.SOLOV2.MAX_PER_IMG 20 \
-	MODEL.WEIGHTS training_dir/FreeSOLO/model_0029999.pth
+	# MODEL.WEIGHTS /home/hossein/github/FreeSOLO/training_dir/densecl_r101_imagenet_200ep.pth 
 
 # convert to annotation format
-python tools/gen_pseudo_labels.py
+# CUDA_VISIBLE_DEVICES=7 python tools/gen_pseudo_labels.py

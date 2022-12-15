@@ -5,9 +5,9 @@
 # https://github.com/NVlabs/FreeSOLO/blob/main/LICENSE
 
 #export GLOO_SOCKET_IFNAME=eth0
-python train_net.py \
+CUDA_VISIBLE_DEVICES=7 python train_net.py \
 	--dist-url tcp://127.0.0.1:$(( RANDOM % 1000 + 50000 )) \
-	--num-gpus 8 \
+	--num-gpus 1 \
 	--config configs/freesolo/freesolo_30k.yaml \
 	DATASETS.TRAIN '("coco_2017_train_unlabeled_freesolo_pl",)' \
 	OUTPUT_DIR training_dir/FreeSOLO_pl\
