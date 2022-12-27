@@ -9,4 +9,5 @@ python train_net.py \
 	--dist-url tcp://127.0.0.1:$(( RANDOM % 1000 + 50000 )) \
 	--num-gpus 1 \
 	--config configs/freesolo/freesolo_30k.yaml \
+	--ignore_warning \
 	OUTPUT_DIR training_dir/FreeSOLO\

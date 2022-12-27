@@ -42,6 +42,7 @@ from freesolo.engine.trainer import BaselineTrainer
 # hacky way to register
 import freesolo.data.datasets.builtin
 from freesolo.modeling.solov2 import PseudoSOLOv2
+import warnings
 
 
 def setup(args):
@@ -60,6 +61,8 @@ def setup(args):
 def main(args):
     get_truck_dicts()
     cfg = setup(args)
+    if (args.ignore_warning):
+        warnings.filterwarnings("ignore")
     Trainer = BaselineTrainer
     if args.eval_only:
         model = Trainer.build_model(cfg)
