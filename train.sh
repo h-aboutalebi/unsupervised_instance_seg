@@ -10,4 +10,5 @@ python train_net.py \
 	--num-gpus 1 \
 	--config configs/freesolo/freesolo_30k.yaml \
 	--ignore_warning \
+	--resume \
 	OUTPUT_DIR training_dir/FreeSOLO\
