@@ -15,10 +15,12 @@ import pycocotools.mask as mask_util
 import numpy as np
 import torch
 import torch.nn.functional as F
-
+import os, sys
+sys.path.append("/home/hossein/github/FreeSOLO")
 from detectron2.config import get_cfg
 from detectron2.data.detection_utils import read_image
 from detectron2.utils.logger import setup_logger
+from datasets.truck.register_truck import get_truck_dicts
 
 from predictor import VisualizationDemo
 
@@ -83,6 +85,7 @@ def get_parser():
 
 
 if __name__ == "__main__":
+    get_truck_dicts()
     mp.set_start_method("spawn", force=True)
     args = get_parser().parse_args()
     setup_logger(name="fvcore")

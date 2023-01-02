@@ -5,10 +5,10 @@
 # https://github.com/NVlabs/FreeSOLO/blob/main/LICENSE
 
 #export GLOO_SOCKET_IFNAME=eth0
-python train_net.py \
+CUDA_VISIBLE_DEVICES=0 python train_net.py \
 	--dist-url tcp://127.0.0.1:$(( RANDOM % 1000 + 50000 )) \
 	--num-gpus 1 \
 	--config configs/freesolo/freesolo_30k.yaml \
 	--ignore_warning \
 	--resume \
-	OUTPUT_DIR training_dir/FreeSOLO\
+	OUTPUT_DIR /home/hossein/data/results_free_solo\
