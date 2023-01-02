@@ -17,4 +17,4 @@ CUDA_VISIBLE_DEVICES=0 python train_net.py \
 	MODEL.WEIGHTS /home/hossein/data/results_free_solo/model_0004999.pth
 
 # convert to annotation format
-# CUDA_VISIBLE_DEVICES=0 python tools/gen_pseudo_labels.py
+CUDA_VISIBLE_DEVICES=0 python tools/gen_pseudo_labels.py
