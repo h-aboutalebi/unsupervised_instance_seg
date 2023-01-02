@@ -5,14 +5,19 @@
 # https://github.com/NVlabs/FreeSOLO/blob/main/LICENSE
 
 import os
+import argparse
 import json
 import glob
 from tqdm import tqdm
-
-save_path = 'datasets/coco/annotations/instances_train2017_unlabeled2017_freesolo_pl.json'
-
-ann_dict = json.load(open('datasets/coco/annotations/instances_train2017_unlabeled2017_densecl_r101.json'))
-anns = json.load(open('training_dir/FreeSOLO_pl_1/inference/coco_instances_results.json'))
+parser = argparse.ArgumentParser(description='generate pseudo labels')
+parser.add_argument('-o', '--output_path', default=os.path.expanduser('~') + '/data/tmp3',
+                    help='output path for files produced by the agent')
+parser.add_argument('--input_path', default=os.path.expanduser('~') + '/data/tmp3/inference/coco_instances_results.json',
+                    help='output path for files produced by the agent')
+args = parser.parse_args()
+save_path = os.path.join(args.output_path, 'ann.json')
+ann_dict = json.load(open("datasets/truck/val/ann.json"))
+anns = json.load(open(args.input_path))
 print('original {} images, {} objects.'.format(len(ann_dict['images']), len(ann_dict['annotations'])))
 
 start_id = len(ann_dict['annotations'])
