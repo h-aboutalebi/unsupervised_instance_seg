@@ -11,13 +11,3 @@ CUDA_VISIBLE_DEVICES=0 python demo/inference_freemask.py --config-file configs/f
 	--split -1 \
 	--opts MODEL.WEIGHTS training_dir/pre-trained/DenseCL/densecl_r101_imagenet_200ep.pkl \
 
-# # generate free masks for unlabeled2017 images
-# python demo/inference_freemask.py --config-file configs/freesolo/freemask.yaml \
-# 	--input datasets/coco/unlabeled2017/ \
-# 	--output training_dir/instances_unlabeled2017_densecl_r101.json \
-# 	--split -1 \
-# 	--opts MODEL.WEIGHTS training_dir/pre-trained/DenseCL/densecl_r101_imagenet_200ep.pkl \
-
-# # merge train2017 and unlabeled2017 json files
-# python tools/merge_train2017_unlabeled2017.py
-
